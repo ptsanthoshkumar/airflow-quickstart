@@ -1,44 +1,46 @@
-# [Apache Airflow®](https://airflow.apache.org/) Quickstart
+Overview
+========
 
-Welcome to the Astronomer's Apache Airflow Quickstart repository!
+Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
 
-Launch your journey with Airflow by signing up for a free trial at astronomer.io! If you've already created a trial and have cloned this repository, check out your chosen quickstart in the table of contents.
+Project Contents
+================
 
-## Table of Contents
+Your Astro project contains the following files and folders:
 
-This repository contains 3 projects for demonstrating the capabilities and use cases of Airflow.
+- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes an example DAG that runs every 30 minutes and simply prints the current date. It also includes an empty 'my_custom_function' that you can fill out to execute Python code.
+- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
+- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
+- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
+- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
+- plugins: Add custom or community plugins for your project to this file. It is empty by default.
+- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
 
-- [Learning Airflow](learning-airflow/README.md) A project for learning the basics of Airflow
-- [ETL](etl/README.md) A project for learning the basics of ETL with Airflow
-- [Generative AI](generative-ai/README.md) A project for learning how to use Airflow to train a generative AI model
+Deploy Your Project Locally
+===========================
 
-## Purpose of This Repository
+1. Start Airflow on your local machine by running 'astro dev start'.
 
-These templates are designed to help new users learn and try Airflow quickly. 
-
-Exercises in each project will expose you to ways to enhance and customize Airflow's functionality.
-
-As you move your workloads into business-critical applications or adopt advanced Airflow features, reach out to [Astronomer's Airflow experts](https://www.astronomer.io/contact/) to get help deploying to production.
-
-## Run a Template Locally
-
-1. Navigate to one of the projects above by `cd`ing into its corresponding directory.
-
-2. Start Airflow on your local machine by running `astro dev start`.
-
-This command will spin up 4 Docker containers on your machine, each for a different Airflow component:
+This command will spin up 3 Docker containers on your machine, each for a different Airflow component:
 
 - Postgres: Airflow's Metadata Database
-- Webserver: the Airflow component responsible for rendering the Airflow UI
-- Scheduler: the Airflow component responsible for monitoring and triggering tasks
-- Triggerer: the Airflow component responsible for triggering deferred tasks
+- Webserver: The Airflow component responsible for rendering the Airflow UI
+- Scheduler: The Airflow component responsible for monitoring and triggering tasks
 
-3. Verify that all 4 Docker containers were created by running `docker ps`.
+2. Verify that all 3 Docker containers were created by running 'docker ps'.
 
-Note: Running `astro dev start` will start your project with the Airflow Webserver exposed at port 8080 and Postgres exposed at port 5432. If you already have either of those ports allocated, you can either [stop your existing Docker containers or change the port](https://docs.astronomer.io/astro/test-and-troubleshoot-locally#ports-are-not-available).
+Note: Running 'astro dev start' will start your project with the Airflow Webserver exposed at port 8080 and Postgres exposed at port 5432. If you already have either of those ports allocated, you can either stop your existing Docker containers or change the port.
 
-4. Access the Airflow UI for your local Airflow project. To do so, go to http://localhost:8080/ and log in with `admin` for both your username and password.
+3. Access the Airflow UI for your local Airflow project. To do so, go to http://localhost:8080/ and log in with 'admin' for both your Username and Password.
 
-You should also be able to access your Postgres database at http://localhost:5432/postgres.
+You should also be able to access your Postgres Database at 'localhost:5432/postgres'.
 
-5. Learn about enhancing and customizing Airflow's functionality by working through the exercises in the DAG.
+Deploy Your Project to Astronomer
+=================================
+
+If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://astronomer.io/docs/astro/deploy-code/
+
+Contact
+=======
+
+The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support team: https://support.astronomer.io/
